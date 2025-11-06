@@ -74,17 +74,14 @@ def load_ltx_model():
         # Import LTX Video pipeline
         from diffusers import LTXPipeline
 
-        # Load model with optimizations
+        # Load model (automatically cached by HuggingFace)
         model = LTXPipeline.from_pretrained(
             "Lightricks/LTX-Video",
             torch_dtype=torch.bfloat16,
         ).to("cuda")
 
-        # Enable memory optimizations
-        model.enable_model_cpu_offload()
-        model.enable_vae_slicing()
-
-        logger.info("LTX Video model loaded successfully!")
+        # Model is now cached at /root/.cache/huggingface/hub/
+        logger.info("LTX Video model loaded successfully and cached!")
         return True
 
     except Exception as e:
