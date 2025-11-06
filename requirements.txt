@@ -6,3 +6,5 @@ fastapi
 uvicorn[standard]
 imageio[ffmpeg]
 pydantic
+sentencepiece
+protobuf
