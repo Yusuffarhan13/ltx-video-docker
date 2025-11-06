@@ -31,11 +31,10 @@ RUN pip install --no-cache-dir \
     imageio[ffmpeg] \
     pydantic \
     sentencepiece \
-    protobuf \
-    huggingface_hub[cli]
+    protobuf
 
-# Pre-download the LTX Video model using huggingface-cli (faster download)
-RUN huggingface-cli download Lightricks/LTX-Video --local-dir /root/.cache/huggingface/hub/models--Lightricks--LTX-Video/snapshots/main
+# Note: Model (~10-20GB) will be downloaded automatically on first container start
+# This keeps Docker build fast and image small
 
 # Copy server script
 COPY ltx_video_server.py .
