@@ -129,6 +129,7 @@ async def generate_video_task(job_id: str, request: GenerationRequest):
 
         # Save frames as video using imageio
         import imageio
+        import numpy as np
         frames = output.frames[0]  # Get first video
 
         writer = imageio.get_writer(
@@ -139,7 +140,9 @@ async def generate_video_task(job_id: str, request: GenerationRequest):
         )
 
         for frame in frames:
-            writer.append_data(frame)
+            # Convert PIL Image to numpy array
+            frame_array = np.array(frame)
+            writer.append_data(frame_array)
 
         writer.close()
 
