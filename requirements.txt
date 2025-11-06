@@ -1,0 +1,8 @@
+torch
+diffusers[torch]
+transformers
+accelerate
+fastapi
+uvicorn[standard]
+imageio[ffmpeg]
+pydantic
